@@ -255,7 +255,7 @@ class App {
     const gltfPromises = [];
     gltfPromises.push(viewer.load(fileURL, paths.rootPath, fileMap));
 
-    if (files.paths.length == 2) {
+    if (files.paths.length > 1) {
       const viewer_second = this.viewer_second || this.createSecondViewer();
       paths_second = files.paths[1];
       fileURL_second =
@@ -330,9 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (!app.viewer) return;
 
-    if (e.key === 'ArrowRight') {
+    if (e.key === 'ArrowRight' || e.key === 'n') {
       app.nextModel();
-    } else if (e.key === 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'p') {
       app.prevModel();
     } else if (e.key === 'ArrowUp') {
       window.location.reload();
