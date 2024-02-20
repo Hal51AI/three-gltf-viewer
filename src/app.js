@@ -189,18 +189,18 @@ class App {
    * @param  {Array<{filename: string, link: string}>} objs
    */
   loadExternal(objs) {
-    let newObjs = [];
+    let modelObjs = [];
     if (objs.viewMultiple) {
       this.viewMultiple = true;
-      newObjs = [...objs.objs];
+      modelObjs = [...objs.objs];
     } else {
-      newObjs = [...objs];
+      modelObjs = [...objs];
     }
     this.showSpinner();
     this.dropEl.replaceChildren();
 
     Promise.all(
-      objs.map((fileObj) => {
+      modelObjs.map((fileObj) => {
         return fetch(fileObj.link)
           .then((res) => res.blob())
           .then((blob) => {
