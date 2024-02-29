@@ -204,7 +204,7 @@ class App {
         return fetch(fileObj.link)
           .then((res) => res.blob())
           .then((blob) => {
-            return new File(blob, fileObj.filename, { type: '' });
+            return new File([blob], fileObj.filename, { type: '' });
           });
       })
     ).then((fileList) => {
@@ -214,7 +214,7 @@ class App {
   }
 
   loadUploaded(objs) {
-    const fileList = objs.map((obj, index) => new File(obj, `file${index}.glb`, { type: '' }));
+    const fileList = objs.map((obj, index) => new File([obj], `file${index}.glb`, { type: '' }));
     const fileMap = new Map(fileList.map((file) => [file.name, file]));
     this.load(fileMap);
   }
