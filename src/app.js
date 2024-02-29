@@ -213,6 +213,12 @@ class App {
     });
   }
 
+  loadUploaded(objs) {
+    const fileList = objs.map((obj, index) => new File([obj], `file${index}.glb`, { type: '' }));
+    const fileMap = new Map(fileList.map((file) => [file.name, file]));
+    this.load(fileMap);
+  }
+
   /**
    * Passes a model to the viewer, given file and resources.
    * @param  {File|string} rootFile
