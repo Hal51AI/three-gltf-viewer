@@ -295,6 +295,7 @@ class App {
 
   showSpinner() {
     this.spinnerEl.style.display = '';
+    document.getElementById('loading-video').play();
   }
 
   hideSpinner() {
