@@ -80,7 +80,7 @@ export class Viewer {
       ambientColor: 0xFFFFFF,
       directIntensity: 0.8 * Math.PI, // TODO(#116)
       directColor: 0xFFFFFF,
-      bgColor: 0xff0000,
+      bgColor: 0x000000,
     };
 
     this.prevTime = 0;
