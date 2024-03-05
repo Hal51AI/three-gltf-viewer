@@ -61,8 +61,8 @@ class App {
   createDropzone() {
     const dropCtrl = new SimpleDropzone(this.dropEl, this.inputEl);
     dropCtrl.on('drop', ({ files }) => this.load(files));
-    dropCtrl.on('dropstart', () => this.showSpinner());
-    dropCtrl.on('droperror', () => this.hideSpinner());
+    // dropCtrl.on('dropstart', () => this.showSpinner());
+    // dropCtrl.on('droperror', () => this.hideSpinner());
   }
 
   /**
@@ -198,12 +198,12 @@ class App {
     }
     this.showSpinner();
     this.dropEl.replaceChildren();
-
     Promise.all(
       modelObjs.map((fileObj) => {
         return fetch(fileObj.link)
           .then((res) => res.blob())
           .then((blob) => {
+            console.log(blob);
             return new File([blob], fileObj.filename, { type: '' });
           });
       })
@@ -214,7 +214,8 @@ class App {
   }
 
   loadUploaded(objs) {
-    const fileList = objs.map((obj, index) => new File([obj], `file${index}.glb`, { type: '' }));
+    alert(objs[0]);
+    const fileList = objs.map((obj, index) => new File(obj, `file${index}.glb`, { type: '' }));
     const fileMap = new Map(fileList.map((file) => [file.name, file]));
     this.load(fileMap);
   }
