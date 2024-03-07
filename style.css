@@ -366,18 +366,9 @@ footer .separator {
  */
 
 .spinner {
-  width: 40px;
-  height: 40px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -20px;
-
-  background-color: white;
-
-  /* border-radius: 100%;
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out; */
+  left: calc(50% - 25px);
+  top: calc(50% - 25px);
 }
 
 @-webkit-keyframes sk-scaleout {

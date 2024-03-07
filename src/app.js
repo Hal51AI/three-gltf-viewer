@@ -214,7 +214,6 @@ class App {
   }
 
   loadUploaded(objs) {
-    alert(objs[0]);
     const fileList = objs.map((obj, index) => new File(obj, `file${index}.glb`, { type: '' }));
     const fileMap = new Map(fileList.map((file) => [file.name, file]));
     this.load(fileMap);
@@ -296,7 +295,6 @@ class App {
 
   showSpinner() {
     this.spinnerEl.style.display = '';
-    document.getElementById('loading-video').play();
   }
 
   hideSpinner() {
