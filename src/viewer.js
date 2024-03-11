@@ -176,6 +176,14 @@ export class Viewer {
     this.axesRenderer.setSize(this.axesDiv.clientWidth, this.axesDiv.clientHeight);
   }
 
+  stopRotate () {
+    this.controls.autoRotate = false;
+  }
+
+  resumeRotate () {
+    this.controls.autoRotate = true;
+  }
+
   load ( url, rootPath, assetMap ) {
 
     const baseURL = LoaderUtils.extractUrlBase(url);

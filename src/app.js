@@ -203,7 +203,6 @@ class App {
         return fetch(fileObj.link)
           .then((res) => res.blob())
           .then((blob) => {
-            console.log(blob);
             return new File([blob], fileObj.filename, { type: '' });
           });
       })
@@ -247,6 +246,8 @@ class App {
         cleanup();
         this.viewerEl.requestFullscreen();
       });
+
+      this.addKeyDownEvent();
   }
 
   async viewMultipleModels(files) {
@@ -275,6 +276,8 @@ class App {
     this.hideSpinner();
     if (typeof paths.rootFile === 'object') URL.revokeObjectURL(fileURL);
     if (typeof paths_second.rootFile === 'object') URL.revokeObjectURL(fileURL_second);
+
+    this.addKeyDownEvent();
   }
 
   /**
@@ -299,6 +302,18 @@ class App {
 
   hideSpinner() {
     this.spinnerEl.style.display = 'none';
+  }
+
+  addKeyDownEvent() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'r') {
+        if (this.viewer) this.viewer.resumeRotate();
+        if (this.viewer_second) this.viewer_second.resumeRotate();
+      } else if (e.key === 's') {
+        if (this.viewer) this.viewer.stopRotate();
+        if (this.viewer_second) this.viewer_second.stopRotate();
+      }
+    });
   }
 }
 
@@ -338,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.key === 'ArrowRight' || e.key === 'n') {
       app.nextModel();
-    } else if (e.key === 'ArrowLeft' || e.key === 'p') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'b') {
       app.prevModel();
     } else if (e.key === 'ArrowUp') {
       window.location.reload();
