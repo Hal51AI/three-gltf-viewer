@@ -184,6 +184,13 @@ class App {
     this.loadCurrentModel();
   }
 
+  uploadCustom() {
+    this.inputEl.click();
+    this.dropEl.childNodes[1].style.display = 'none';
+    this.dropEl.childNodes[3].style.display = 'none';
+    this.dropEl.childNodes[7].style.display = 'none';
+  }
+
   /**
    * Loads a fileset provided by external source.
    * @param  {Array<{filename: string, link: string}>} objs
@@ -210,12 +217,6 @@ class App {
       const fileMap = new Map(fileList.map((file) => [file.name, file]));
       this.load(fileMap);
     });
-  }
-
-  loadUploaded(objs) {
-    const fileList = objs.map((obj, index) => new File(obj, `file${index}.glb`, { type: '' }));
-    const fileMap = new Map(fileList.map((file) => [file.name, file]));
-    this.load(fileMap);
   }
 
   /**
@@ -247,7 +248,7 @@ class App {
         this.viewerEl.requestFullscreen();
       });
 
-      this.addKeyDownEvent();
+    this.addKeyDownEvent();
   }
 
   async viewMultipleModels(files) {
