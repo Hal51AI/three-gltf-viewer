@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
-        app.requestFullscreen();
+        app.viewerEl.requestFullscreen();
       }
     } else if (e.key === 'o' && !app.viewer) {
       app.inputEl.click();
