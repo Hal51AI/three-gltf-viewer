@@ -2,10 +2,10 @@
 
 Preview glTF 2.0 models in WebGL using three.js and a drag-and-drop interface.
 
-Viewer: [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/)
+Viewer: [viewer.hal51.ai](https://viewer.hal51.ai)
 
 
-![screenshot](https://user-images.githubusercontent.com/1848368/31580352-b7354096-b101-11e7-86d7-f07677835812.png)
+![screenshot](./assets/screenshot.png)
 
 ## Quickstart
 
