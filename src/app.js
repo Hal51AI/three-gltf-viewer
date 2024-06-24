@@ -245,7 +245,7 @@ class App {
         //   this.validator.validate(fileURL, rootPath, fileMap, gltf);
         // }
         cleanup();
-        this.viewerEl.requestFullscreen();
+        // this.viewerEl.requestFullscreen();
       });
 
     this.addKeyDownEvent();
@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else {
-        app.viewerEl.requestFullscreen();
+        // app.viewerEl.requestFullscreen();
       }
     } else if (e.key === 'o' && !app.viewer) {
       app.inputEl.click();
