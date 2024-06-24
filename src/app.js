@@ -361,17 +361,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Right click for nextModel
+  // Right click for prevModel
   document.addEventListener('contextmenu', (e) => {
     e.preventDefault(); // Prevent the default context menu from appearing
     if (!app.viewer) return;
-    app.nextModel();
+    app.prevModel();
   });
 
-  // Left click for prevModel
+  // Left click for nextModel
   document.addEventListener('click', (e) => {
     if (!app.viewer) return;
-    app.prevModel();
+    app.nextModel();
   });
 
   // // Touch event for prevModel
