@@ -374,5 +374,17 @@ document.addEventListener('DOMContentLoaded', () => {
     app.prevModel();
   });
 
+  // Touch event for prevModel
+  document.addEventListener('touchstart', (e) => {
+    if (!app.viewer) return;
+    app.prevModel();
+  });
+
+  // Touch event for nextModel
+  document.addEventListener('touchend', (e) => {
+    if (!app.viewer) return;
+    app.nextModel();
+  });
+
   console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
 });
