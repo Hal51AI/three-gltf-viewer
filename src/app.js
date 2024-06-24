@@ -361,27 +361,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Right click for prevModel
-  document.addEventListener('contextmenu', (e) => {
-    e.preventDefault(); // Prevent the default context menu from appearing
-    if (!app.viewer) return;
-    app.prevModel();
-  });
-
-  // Left click for nextModel
-  document.addEventListener('click', (e) => {
-    if (!app.viewer) return;
-    app.nextModel();
-  });
-
-  // // Touch event for prevModel
-  // document.addEventListener('touchstart', (e) => {
+  // // Right click for prevModel
+  // document.addEventListener('contextmenu', (e) => {
+  //   e.preventDefault(); // Prevent the default context menu from appearing
   //   if (!app.viewer) return;
   //   app.prevModel();
   // });
 
-  // // Touch event for nextModel
-  // document.addEventListener('touchend', (e) => {
+  // // Left click for nextModel
+  // document.addEventListener('click', (e) => {
   //   if (!app.viewer) return;
   //   app.nextModel();
   // });
