@@ -361,9 +361,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.addEventListener('mousedown', (e) => {
-    console.log("mousedown", e.button);
-  });
-
   console.info('[glTF Viewer] Debugging data exported as `window.VIEWER`.');
 });
