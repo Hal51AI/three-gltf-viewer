@@ -352,9 +352,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (!app.viewer) return;
 
-    if (e.key === 'ArrowRight' || e.key === 'n') {
+    if (e.key === 'ArrowRight' || e.key === 'n' || e.key === '3') {
       app.nextModel();
-    } else if (e.key === 'ArrowLeft' || e.key === 'b') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'b' || e.key === '6') {
       app.prevModel();
     } else if (e.key === 'ArrowUp') {
       window.location.reload();
