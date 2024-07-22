@@ -351,10 +351,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // setup navigation event handlers
   document.addEventListener('keydown', (e) => {
     if (!app.viewer) return;
-
-    if (e.key === 'ArrowRight' || e.key === 'n' || e.key === '3') {
+    console.log(e.key);
+    if (e.key === 'ArrowRight' || e.key === 'n' || e.key === '3' || e.key == 'PageUp') {
       app.nextModel();
-    } else if (e.key === 'ArrowLeft' || e.key === 'b' || e.key === '6') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'b' || e.key === '6' || e.key == 'PageDown') {
       app.prevModel();
     } else if (e.key === 'ArrowUp') {
       window.location.reload();
