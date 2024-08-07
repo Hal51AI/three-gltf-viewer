@@ -246,9 +246,14 @@ class App {
       const fileMap = new Map(fileList.map((file) => [file.name, file]));
       this.load(fileMap);
       setInterval(() => {
-        const randomIndex = Math.floor(Math.random() * length);
+        let previousIndex, randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * length);
+        } while (randomIndex === previousIndex);
+
+        previousIndex = randomIndex;
         this.loadCurrentModel(randomIndex);
-      }, 100000);
+      }, 10000);
     });
   }
 
@@ -343,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add event listeners for examples button
   document.querySelector(".examples button").addEventListener("click", () => {
-    app.loadExternal(objs);
+    app.loadAll(objs);
   });
 
   // setup page event handlers
