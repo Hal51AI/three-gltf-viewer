@@ -227,7 +227,15 @@ class App {
     });
   }
 
-  loadAllRandom(objs) {
+  shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  loadAllShuffle(objs) {
     let modelObjs = [];
     modelObjs = [...objs];
     this.showSpinner();
@@ -242,17 +250,11 @@ class App {
           });
       })
     ).then((fileList) => {
-      const length = fileList.length;
+      fileList = this.shuffleArray(fileList);
       const fileMap = new Map(fileList.map((file) => [file.name, file]));
       this.load(fileMap);
       setInterval(() => {
-        let previousIndex, randomIndex;
-        do {
-          randomIndex = Math.floor(Math.random() * length);
-        } while (randomIndex === previousIndex);
-
-        previousIndex = randomIndex;
-        this.loadCurrentModel(randomIndex);
+        this.nextModel();
       }, 10000);
     });
   }
