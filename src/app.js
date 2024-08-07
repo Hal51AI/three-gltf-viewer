@@ -33,6 +33,7 @@ class App {
     this.viewer_second = null;
     this.viewerEl = null;
     this.viewerEl_second = null;
+    this.timer = null;
     this.files = { fileMap: {}, paths: [], index: 0 };
     this.spinnerEl = el.querySelector(".spinner");
     this.dropEl = el.querySelector(".dropzone");
@@ -130,11 +131,11 @@ class App {
   /**
    * Loads the current model.
    */
-  loadCurrentModel() {
+  loadCurrentModel(currentIndex = null) {
     if (this.files.paths.length === 0) {
       this.onError("No .gltf or .glb asset found.");
     }
-    let paths = this.files.paths[this.files.index];
+    let paths = this.files.paths[currentIndex ?? this.files.index];
     if (this.viewMultiple) {
       this.viewMultipleModels(this.files);
     } else {
@@ -223,6 +224,31 @@ class App {
     ).then((fileList) => {
       const fileMap = new Map(fileList.map((file) => [file.name, file]));
       this.load(fileMap);
+    });
+  }
+
+  loadAll(objs) {
+    let modelObjs = [];
+    modelObjs = [...objs];
+    this.showSpinner();
+    this.dropEl.replaceChildren();
+
+    Promise.all(
+      modelObjs.map((fileObj) => {
+        return fetch(fileObj.link)
+          .then((res) => res.blob())
+          .then((blob) => {
+            return new File([blob], fileObj.filename, { type: "" });
+          });
+      })
+    ).then((fileList) => {
+      const length = fileList.length;
+      const fileMap = new Map(fileList.map((file) => [file.name, file]));
+      this.load(fileMap);
+      setInterval(() => {
+        const randomIndex = Math.floor(Math.random() * length);
+        this.loadCurrentModel(randomIndex);
+      }, 100000);
     });
   }
 
