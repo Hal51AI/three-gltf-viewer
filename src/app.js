@@ -227,7 +227,7 @@ class App {
     });
   }
 
-  loadAll(objs) {
+  loadAllRandom(objs) {
     let modelObjs = [];
     modelObjs = [...objs];
     this.showSpinner();
@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add event listeners for examples button
   document.querySelector(".examples button").addEventListener("click", () => {
-    app.loadAll(objs);
+    app.loadExternal(objs);
   });
 
   // setup page event handlers
