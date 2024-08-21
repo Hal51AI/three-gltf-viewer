@@ -358,28 +358,46 @@ footer .separator {
 
 .spinner {
   position: absolute;
-  left: calc(50% - 25px);
-  top: calc(50% - 25px);
-  --s: 25px;
+  left: calc(50%);
+  top: calc(50%);
+  transform: translate(-50%, -50%);
+  --s: 100px;
+  --g: 20px;
   
-  --_d: calc(0.353*var(--s));
-  width: calc(var(--s) + var(--_d));
-  aspect-ratio: 1;
+  width: calc(3*(1.353*var(--s) + var(--g)));
   display: grid;
-  filter: drop-shadow(0 0 0 #fff);
-  animation: l2 0.8s infinite;
+  justify-items: end;
+  aspect-ratio: 3;
+  overflow: hidden;
+  --_m: linear-gradient(90deg,#0000,#000 15px calc(100% - 15px),#0000);
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
 }
 
-.spinner:before {
+.spinner:before { 
   content: "";
-  clip-path: polygon(var(--_d) 0,100% 0,100% calc(100% - var(--_d)),calc(100% - var(--_d)) 100%,0 100%,0 var(--_d));
+  width: 200%;
   background:
-    conic-gradient(from -90deg at var(--s) var(--_d),
-     #fff 135deg,#666 0 270deg,#aaa 0);
+    linear-gradient(90deg,#ff1818 50%,#0000 0),
+    conic-gradient(from -90deg at var(--s) calc(0.353*var(--s)),
+      #fff 135deg,#666 0 270deg,#aaa 0); 
+  background-blend-mode: multiply;
+  --_m:
+    linear-gradient(to bottom right,
+       #0000 calc(0.25*var(--s)),#000 0 calc(100% - calc(0.25*var(--s)) - 1.414*var(--g)),#0000 0),
+    conic-gradient(from -90deg at right var(--g) bottom var(--g),#000 90deg,#0000 0);
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  background-size:   calc(100%/3) 100%, calc(100%/6) 100%;
+  -webkit-mask-size: calc(100%/6) 100%;
+          mask-size: calc(100%/6) 100%;
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+  animation: l10 1s infinite linear;
 }
 
-@keyframes l2{
-  50% {filter:drop-shadow(0 0 5px #fff)}
+@keyframes l10 {
+  to {transform:translate(calc(100%/3))}
 }
 
 @-webkit-keyframes sk-scaleout {
